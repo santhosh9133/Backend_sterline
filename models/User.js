@@ -72,9 +72,7 @@ const userSchema = new mongoose.Schema({
   }
 });
 
-// Index for better query performance
-userSchema.index({ email: 1 });
-userSchema.index({ username: 1 });
+// Create indexes for better query performance (email and username already indexed via unique: true)
 userSchema.index({ createdAt: -1 });
 
 // Pre-save middleware to hash password

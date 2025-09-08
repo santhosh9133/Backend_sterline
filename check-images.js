@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 const Employee = require('./models/Employee');
+require('dotenv').config();
 
-mongoose.connect('mongodb://localhost:27017/employee_management')
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/employee_management')
   .then(async () => {
     console.log('Connected to database');
     const employees = await Employee.find({}, 'firstName lastName profilePhoto');

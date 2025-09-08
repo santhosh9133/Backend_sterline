@@ -81,9 +81,7 @@ const employeeSchema = new mongoose.Schema({
   }
 });
 
-// Index for better query performance
-employeeSchema.index({ email: 1 });
-employeeSchema.index({ empCode: 1 });
+// Create indexes for better query performance (email and empCode already indexed via unique: true)
 employeeSchema.index({ department: 1 });
 employeeSchema.index({ designation: 1 });
 employeeSchema.index({ createdAt: -1 });

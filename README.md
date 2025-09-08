@@ -60,7 +60,7 @@ npm run dev
 npm start
 ```
 
-The server will start on `http://localhost:5000` (or the port specified in `.env`).
+The server will start on `https://backend-sterline-wyfm.onrender.com` (or the port specified in `.env`).
 
 ## API Endpoints
 
@@ -79,7 +79,7 @@ The server will start on `http://localhost:5000` (or the port specified in `.env
 
 #### Create User
 ```bash
-curl -X POST http://localhost:5000/api/users \
+curl -X POST https://backend-sterline-wyfm.onrender.com/api/users \
   -H "Content-Type: application/json" \
   -d '{
     "username": "johndoe",
@@ -92,7 +92,7 @@ curl -X POST http://localhost:5000/api/users \
 
 #### Get All Users
 ```bash
-curl http://localhost:5000/api/users
+curl https://backend-sterline-wyfm.onrender.com/api/users
 ```
 
 ## Project Structure
@@ -120,7 +120,7 @@ backend/
 | `NODE_ENV` | Environment mode | development |
 | `MONGODB_URI` | MongoDB connection string | mongodb://localhost:27017/myapp |
 | `JWT_SECRET` | JWT signing secret | - |
-| `CORS_ORIGIN` | Allowed CORS origin | http://localhost:3000 |
+| `CORS_ORIGIN` | Allowed CORS origin | https://backend-sterline-wyfm.onrender.com |
 
 ## Security Features
 

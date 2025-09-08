@@ -21,7 +21,7 @@ app.use(helmet({
   contentSecurityPolicy: {
     directives: {
       ...helmet.contentSecurityPolicy.getDefaultDirectives(),
-      "img-src": ["'self'", "data:", "http://localhost:5000", "http://localhost:5173"]
+      "img-src": ["'self'", "data:", "https://backend-sterline-wyfm.onrender.com", "http://localhost:5173"]
     }
   }
 })); // Security headers with custom CSP
@@ -87,6 +87,6 @@ app.use((error, req, res, next) => {
 // Start server
 app.listen(PORT, () => {
   console.log(` Server is running on port ${PORT}`);
-  console.log(` Health check: http://localhost:${PORT}/health`);
-  console.log(` API base URL: http://localhost:${PORT}/api`);
+  console.log(` Health check: https://backend-sterline-wyfm.onrender.com/health`);
+  console.log(` API base URL: https://backend-sterline-wyfm.onrender.com/api`);
 });
