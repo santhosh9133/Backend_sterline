@@ -19,7 +19,20 @@ class Database {
     console.log('🔄 Attempting to connect to MongoDB...');
     console.log('📍 MongoDB URI exists:', mongoURI ? 'Yes' : 'No');
     
-    mongoose.connect(mongoURI)
+    // Connection options to prevent timeout issues
+    const options = {
+      serverSelectionTimeoutMS: 30000, // 30 seconds
+      connectTimeoutMS: 30000, // 30 seconds
+      socketTimeoutMS: 30000, // 30 seconds
+      maxPoolSize: 10, // Maintain up to 10 socket connections
+      minPoolSize: 5, // Maintain a minimum of 5 socket connections
+      maxIdleTimeMS: 30000, // Close connections after 30 seconds of inactivity
+    };
+
+    // Disable mongoose buffering to prevent timeout issues
+    mongoose.set('bufferCommands', false);
+
+    mongoose.connect(mongoURI, options)
     .then(() => {
       console.log('✅ MongoDB connected successfully');
     })
