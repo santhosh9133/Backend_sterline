@@ -7,17 +7,30 @@ class Database {
   }
 
   connect() {
-    const mongoURI = process.env.MONGODB_URI ;
+    const mongoURI = process.env.MONGODB_URI;
     
-    mongoose.connect(mongoURI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    })
+    // Check if MongoDB URI is defined
+    if (!mongoURI) {
+      console.error('❌ MONGODB_URI environment variable is not defined!');
+      console.error('Please check your .env file or environment variables in your deployment platform.');
+      process.exit(1);
+    }
+    
+    console.log('🔄 Attempting to connect to MongoDB...');
+    console.log('📍 MongoDB URI exists:', mongoURI ? 'Yes' : 'No');
+    
+    mongoose.connect(mongoURI)
     .then(() => {
-      console.log(' MongoDB connected successfully');
+      console.log('✅ MongoDB connected successfully');
     })
     .catch((error) => {
-      console.error('MongoDB connection error:', error);
+      console.error('❌ MongoDB connection error:', error.message);
+      console.error('🔍 Full error details:', error);
+      console.error('💡 Please check:');
+      console.error('   - Your MongoDB URI is correct');
+      console.error('   - Your network connection');
+      console.error('   - MongoDB server is running');
+      console.error('   - Database credentials are valid');
       process.exit(1);
     });
 
